@@ -12,7 +12,7 @@ public class JavaTutorial2 {
         if (userInput.hasNextInt()) // if user types an int into the keybard
         {
             int numberEntered = userInput.nextInt(); // gets user iput
-            ;
+
             System.out.println("Your age is " + numberEntered); // combines user inut w/ text
 
             // Short hand addition/subtraction
