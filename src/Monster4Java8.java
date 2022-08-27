@@ -14,30 +14,32 @@ public class Monster4Java8 {
 
     public static void reDrawBoard() // to draw board
     {
+
         int k = 1;
         // TOP LINE
         while (k <= 30) {
             System.out.print('-'); // draw boarder
             k++;
-            System.out.println(); // space
 
-            for (int i = 0; i < battleBoard.length; i++) // gets length of battle board
-            {
-                for (int j = 0; j < battleBoard[i].length; i++) // length of number of spcaes in the row IDL
-                {
-                    System.out.print("|" + battleBoard[i][j] + "|");
-                }
-                System.out.println(); // space
-            }
-            // BOT LINE
-            k = 1;
-            while (k <= 30) {
-                System.out.print('-'); // draw boarder
-                k++;
-                System.out.println(); // space
-
-            }
         }
+        System.out.println(); // space
+        for (int i = 0; i < battleBoard.length; i++) // gets length of battle board
+        {
+            for (int j = 0; j < battleBoard[i].length; j++) // length of number of spcaes in the row IDL
+            {
+                System.out.print("|" + battleBoard[i][j] + "|");
+            }
+            System.out.println(); // space
+        }
+        // BOT LINE
+        k = 1;
+        while (k <= 30) {
+            System.out.print('-'); // draw boarder
+            k++;
+
+        }
+        System.out.println(); // space
+
     }
 
     public final String TOMBSTONE = "RIP"; // remeber final?
@@ -107,6 +109,7 @@ public class Monster4Java8 {
 
     // so this is creating a new monster and allowing health, attack, and movement
     // to be changed
+
     {
         health = newHealth;
         attack = newAttack;
