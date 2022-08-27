@@ -103,6 +103,73 @@ public class Monster4Java8 {
 
     }
 
+    public void moveMonster(Monster4Java8[] monster, int arrayItemIndex) {
+        boolean isSpaceOpen = true;
+
+        int maxXBoardSpace = battleBoard.length - 1;
+        int maxYBoardSpace = battleBoard[0].length - 1;
+
+        while (isSpaceOpen) {
+            int randMoveDir = (int) (Math.random() * 4);
+            int randMoveDis = (int) (Math.random() * (this.getMovement() + 1));
+
+            System.out.println(randMoveDis + " " + randMoveDir);
+
+            battleBoard[this.yPos][this.xPos] = '*';
+
+            if (randMoveDir == 0) {
+                if ((this.yPos - randMoveDis) < 0) {
+                    this.yPos = 0;
+                } else {
+                    this.yPos = this.yPos - randMoveDis;
+                }
+            } else if (randMoveDir == 1) {
+                if ((this.xPos + randMoveDis) > maxXBoardSpace) {
+                    this.xPos = maxXBoardSpace;
+                } else {
+                    this.xPos = this.xPos + randMoveDis;
+                }
+            } else if (randMoveDir == 2) {
+                if ((this.yPos + randMoveDis) > maxYBoardSpace) {
+                    this.yPos = maxYBoardSpace;
+                } else {
+                    this.yPos = this.yPos + randMoveDis;
+                }
+            } else {
+                if ((this.xPos - randMoveDis) < 0) {
+                    this.xPos = 0;
+                } else {
+                    this.xPos = this.xPos - randMoveDis;
+                }
+            }
+
+            for (int i = 0; i < monster.length; i++) {
+                if (i == arrayItemIndex) {
+                    continue;
+                }
+
+                if (onMySpace(monster, i, arrayItemIndex)) {
+                    isSpaceOpen = true;
+                } else {
+                    isSpaceOpen = false;
+                }
+            }
+
+        } // END OF WHILE LOOP
+
+        battleBoard[this.yPos][this.xPos] = this.nameChar1;
+
+    } // EMD OF MOVE MONSTER
+
+    public boolean onMySpace(Monster4Java8[] monster, int indexToChk1, int indexToChk2) {
+        if ((monster[indexToChk1].xPos) == (monster[indexToChk2].xPos)
+                && (monster[indexToChk1].yPos) == (monster[indexToChk2].yPos)) {
+            return true;
+        } else {
+            return false;
+        }
+    } // END OF ON MY SPACE
+
     public Monster4Java8(int newHealth, int newAttack, int newMovement, String name) // the constructor!
     // runs ONLY when new obj created, runs once per obj, has to have SAME NAME as
     // file/class

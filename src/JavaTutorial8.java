@@ -1,4 +1,4 @@
-//import java.util.Arrays;
+import java.util.Arrays;
 //import org.apache.commons.lang3.ArrayUtils; //umm idk
 
 public class JavaTutorial8 {
@@ -22,6 +22,14 @@ public class JavaTutorial8 {
 
         Monster4Java8.reDrawBoard();
 
-    }
+        for (Monster4Java8 m : Monsters) {
+            if (m.getAlive()) {
+                int arrayItemIndex = Arrays.asList(Monsters).indexOf(m);
+                m.moveMonster(Monsters, arrayItemIndex);
+            }
+        }
 
+        Monster4Java8.reDrawBoard();
+
+    }
 }
